@@ -16,10 +16,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(320, 260);
+  createCanvas(windowWidth, windowHeight);
   // Create the video
   video = createCapture(VIDEO);
-  video.size(320, 240);
+  video.size(windowWidth, windowHeight);
   video.hide();
 
   //flippedVideo = ml5.flipImage(video);
@@ -40,9 +40,16 @@ function draw() {
 
   textAlign(LEFT);
   textSize(8);
-  text(confianza, 10, height -4);
-}
+  text(confianza, 10, height - 4);
 
+if ((label == 'botella' && confianza >= 0.98)){
+    background(255, 165, 0);
+}else if ((label == 'saludo' && confianza >= 0.98)){
+    background(0, 255, 0);
+}else if ((label == 'groseria' && confianza >= 0.98)){
+    background(255, 0, 0);
+}
+}
 // Get a prediction for the current video frame
 function classifyVideo() {
   //flippedVideo = ml5.flipImage(video)
@@ -64,4 +71,6 @@ function gtonResult(results, error) {
   // Classifiy again!
   classifyVideo();
 }
+
+
 
