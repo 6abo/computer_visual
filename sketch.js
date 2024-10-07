@@ -109,20 +109,20 @@ function draw() {
   push();
   
   // Crear filtros creativos según la etiqueta detectada
-  if (label == 'botella' && confianza >= 0.98) {
+  if (label == 'botella' && confianza >= 0.99) {
     // Efecto de rotación y desenfoque
     translate(width / 2, height / 2);
     rotate(frameCount * 0.05);  // Rotación continua
     imageMode(CENTER);
     image(video, 0, 0, width, height);
     filter(BLUR, 5);  // Desenfoque fuerte
-  } else if (label == 'saludo' && confianza >= 0.98) {
+  } else if (label == 'saludo' && confianza >= 0.99) {
     // Efecto de espejo horizontal y solarización
     translate(width, 0);  // Mover al otro lado
     scale(-1, 1);  // Invertir horizontalmente (espejo)
     image(video, 0, 0, width, height);
     filter(THRESHOLD, 0.5);  // Solarización
-  } else if (label == 'groseria' && confianza >= 0.98) {
+  } else if (label == 'groseria' && confianza >= 0.99) {
     // Zoom dinámico con posterización
     let zoom = sin(frameCount * 0.05) * 0.5 + 1.5;  // Zoom fluctuante
     translate(width / 2, height / 2);
